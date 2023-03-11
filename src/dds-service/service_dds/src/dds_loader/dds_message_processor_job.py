@@ -324,7 +324,7 @@ class DdsMessageProcessor:
             products_data.append({
                 "product_id": str(self._uuid(product.get('id'))),
                 "product_name": product.get('name'),
-                "product_name": product.get('name'),
+                "product_quantity": product.get('quantity'),
                 "category_id": str(self._uuid(product.get('category'))),
                 "category_name": product.get('category'),
             })

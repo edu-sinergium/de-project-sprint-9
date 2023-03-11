@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-  dds-service:
+  sample_service:
     build:
-      context: ./service_dds
+      context: ./service_cdm
       network: host
-    image: dds_service:local
-    container_name: dds_service_container
+    image: cdm_service:local
+    container_name: cdm_service_container
     environment:
       FLASK_APP: ${SAMPLE_SERVICE_APP_NAME:-dds_service}
       DEBUG: ${SAMPLE_SERVICE_DEBUG:-True}
@@ -30,5 +30,5 @@ services:
       PG_WAREHOUSE_PASSWORD: ${PG_WAREHOUSE_PASSWORD}
     network_mode: "bridge"
     ports:
-      - "5012:5000"
+      - "5013:5000"
     restart: unless-stopped
