@@ -1,0 +1,28 @@
+{
+    "object_id": 1086157,
+    "object_type": "order",
+    "payload": {
+        "id": 1086157,
+        "date": "2023-02-24 09:14:46",
+        "cost": 250,
+        "payment": 250,
+        "status": "CLOSED",
+        "restaurant": {
+            "id": "ebfa4c9b8dadfc1da37ab58d",
+            "name": "PLove"
+        },
+        "user": {
+            "id": "626a81ce9a8cd1920641e2a0",
+            "name": "Исидор Дорофеевич Сысоев"
+        },
+        "products": [
+            {
+                "id": "48eb4cd2a6c9fe44ac1cb96a",
+                "price": 250,
+                "quantity": 1,
+                "name": "Манты с говядиной 3шт",
+                "category": "Основные блюда"
+            }
+        ]
+    }
+}

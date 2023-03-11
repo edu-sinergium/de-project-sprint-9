@@ -1,0 +1,43 @@
+# Воспользуемся официальным образом для запуска python.
+FROM python:3.10
+
+ARG KAFKA_HOST="rc1a-io2dmhsor8v4423p.mdb.yandexcloud.net"
+ARG KAFKA_PORT="9091"
+ARG KAFKA_CONSUMER_USERNAME="producer_consumer"
+ARG KAFKA_CONSUMER_PASSWORD="Vzehf4Lt1K9FBr5cuqip"
+ARG KAFKA_CONSUMER_GROUP="1"
+ARG KAFKA_SOURCE_TOPIC="stg-service-orders"
+ARG KAFKA_DESTINATION_TOPIC="dds-service-orders"
+
+ARG REDIS_HOST="c-c9qb3eufahsukvk5q5mu.rw.mdb.yandexcloud.net"
+ARG REDIS_PORT="6380"
+ARG REDIS_PASSWORD="otwEdsiaojMZ2DHfByd4"
+
+ARG PG_WAREHOUSE_HOST="rc1b-0vh0sl2nh19krszr.mdb.yandexcloud.net"
+ARG PG_WAREHOUSE_PORT="6432"
+ARG PG_WAREHOUSE_DBNAME="sprint9dwh"
+ARG PG_WAREHOUSE_USER="db_user"
+ARG PG_WAREHOUSE_PASSWORD="ecSoaUzv8UWNqxeESxUv"
+
+# Обновим компоненты в контейнере.
+RUN apt-get update -y
+
+# Копируем все файлы в контейнер.
+COPY . .
+
+# Запускаем установку зависимостей.
+RUN pip install -r requirements.txt
+
+# Устанавливаем сертификат для подключения к ресурсам в Яндекс Облаке.
+RUN mkdir -p /crt
+RUN wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" --output-document /crt/YandexInternalRootCA.crt
+RUN chmod 0600 /crt/YandexInternalRootCA.crt
+
+# Переходим в директорию src
+WORKDIR /src
+
+# Говорим, что запускать будем python.
+ENTRYPOINT ["python"]
+
+# А именно, файл app.py в директории src.
+CMD ["app.py"]
