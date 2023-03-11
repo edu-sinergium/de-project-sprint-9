@@ -4,6 +4,12 @@
 
 Ссылка на реджистри: cr.yandex/crp4hlc9pq75ume59lbm/dds_service:v2023-03-11-r1
 
+## cdm-service
+
+Ссылка на реджистри: cr.yandex/crp4hlc9pq75ume59lbm/cdm_service:v2023-03-11-r1
+
+Сервисы лежат в папке **src**
+
 ### Описание
 Репозиторий предназначен для сдачи проекта 8-го спринта.
 
