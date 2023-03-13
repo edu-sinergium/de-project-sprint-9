@@ -6,31 +6,7 @@ from lib.pg import PgConnect
 
 class CdmRepository:
     def __init__(self, db: PgConnect) -> None:
-        self._db = db
-        
-        
-    # def user_product_counters_select(self, order_id):
-    #     query = f"""
-    #     select 
-    #         lou.h_user_pk as user_id, 
-    #         lop.h_product_pk as product_id,
-    #         spn."name" as pruduct_name,
-    #         count(lop.h_product_pk) over (partition by lop.h_product_pk, lou.h_user_pk) as order_cnt
-    #     from dds.h_order ho 
-    #     left join dds.l_order_product lop on ho.h_order_pk  = lop.h_order_pk
-    #     left join dds.l_order_user lou on ho.h_order_pk  = lou.h_order_pk
-    #     left join dds.s_product_names spn on lop.h_product_pk = spn.h_product_pk
-    #     left join dds.s_user_names sun on lou.h_user_pk = sun.h_user_pk 
-    #     left join dds.s_order_status sos on ho.h_order_pk = sos.h_order_pk 
-    #     where sos.status = 'CLOSED' and ho.h_order_pk::text = '{order_id}'
-    #     """
-    #     result = ''
-    #     with self._db.connection() as conn:
-    #         with conn.cursor() as cur:
-    #             cur.execute(query)
-    #             result = cur.fetchall()
-        
-    #     return result
+        self._db = db                
     
     def user_product_counters_insert(self,
                             user_id: uuid.UUID,
